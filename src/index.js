@@ -61,7 +61,8 @@ class Form extends Component {
 				return this.renderChildren(element.props.children, errors);
 			}
 		} else {
-			return cloneElement(element, { errors: errors });
+      if (element != null)
+        return cloneElement(element, { errors: errors });
 		}
 	}
 
@@ -70,7 +71,8 @@ class Form extends Component {
 
     const childrenWithProps = Children.map(children, child => {
       // return this.renderChildren(child, errors);
-      return cloneElement(child, { errors: errors });
+      if (child != null)
+        return cloneElement(child, { errors: errors });
     });
 
     return(
